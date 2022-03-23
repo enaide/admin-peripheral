@@ -8,7 +8,7 @@ import { Gateway } from '../models/gateways';
 })
 export class GatewayService {
 
-    url = 'http://api-peripheral-devices.herokuapp.com/api/';
+    url = 'https://api-peripheral-devices.herokuapp.com/api/';
     constructor(private _http: HttpClient) {
 
     }
