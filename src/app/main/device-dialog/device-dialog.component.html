@@ -1,0 +1,81 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent transparent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Add device</span>
+            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+        
+        <form name="deviceForm" [formGroup]="deviceForm" novalidate>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between center">
+                
+                <mat-form-field appearance="outline" fxFlex="100" [fxFlex.gt-sm]="48">
+                    <mat-label>UID:</mat-label>
+                    <input matInput type="text"
+                           autocomplete="off"
+                           [formControlName]="'uid'"
+                           [placeholder]="'uid'"
+                           [readonly]="loadingButtonOptions.active" required>
+
+                    <mat-error *ngIf="UID.invalid && UID.errors.required">
+                        Field required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100" [fxFlex.gt-sm]="48">
+                    <mat-label>Select an status</mat-label>
+                    <mat-select [(value)]="selected" formControlName="status">                      
+                      <mat-option value="online">Online</mat-option>
+                      <mat-option value="offline">Offine</mat-option>                      
+                    </mat-select>
+                </mat-form-field>
+                
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between center">
+                <mat-form-field appearance="outline" fxFlex="100" [fxFlex.gt-sm]="48">
+                    <mat-label>Vendor:</mat-label>
+                    <input matInput type="text" typeNumbersPositiveOnly
+                           [formControlName]="'vendor'"
+                           [placeholder]="'vendor'"
+                           [readonly]="loadingButtonOptions.active" required>
+
+                    <mat-error *ngIf="Vendor.invalid && Vendor.errors.required">
+                        Field required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Date -->
+                <mat-form-field appearance="outline" fxFlex="100" [fxFlex.gt-sm]="48">
+                    <mat-label>Date:  </mat-label>
+                    <input readonly matInput [matDatepicker]="date"
+                        formControlName="date"
+                        (click)="date.open()" required>
+                    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                    <mat-datepicker #date></mat-datepicker>
+                    <mat-error class="mt-10" *ngIf="Date.hasError('required')">
+                        Field required
+                    </mat-error>
+                </mat-form-field>
+
+            </div>            
+
+            <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button type="button" [color]="'default'" (click)="dialogRef.close()">
+                    Cancel
+                </button>
+                <button mat-raised-button type="button" [color]="'default'" (click)="save()">
+                    Save
+                </button>
+                
+            </div>
+            
+        </form>
+    </div>
+    
+</div>
+

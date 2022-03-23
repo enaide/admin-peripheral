@@ -1,0 +1,80 @@
+<div class="profile-box info-box general" fxLayout="column">
+
+    <div class="container">
+        <!-- CONTENT CARD -->
+        <div class="table-container  fuse-white">
+
+            <div class="table-container-body">
+                
+                <table id="table-related" mat-table #table [dataSource]="devices" class="mat-elevation-z8">                    
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="uid">
+                        <th mat-header-cell *matHeaderCellDef> UID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.deviceId.uid}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="vendor">
+                        <th mat-header-cell *matHeaderCellDef> Vendor </th>
+                        <td mat-cell *matCellDef="let element"> {{element.deviceId.vendor}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef> Date</th>
+                        <td mat-cell *matCellDef="let element"> {{element.deviceId.date}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element.deviceId.status}}</td>
+                    </ng-container>
+                    
+
+                    <!-- Buttons Column-->
+                    <ng-container matColumnDef="Ficha">
+                        <th mat-header-cell *matHeaderCellDef class="not-print">Actions</th>
+                        <td mat-cell *matCellDef="let device" class="not-print">                                                                                  
+                            
+
+                            <div *ngIf="loading;else loaded" fxLayout="row" fxLayoutAlign="center center" >
+                                <mat-spinner [diameter]="20" color="accent"></mat-spinner>
+                            </div>
+                            <ng-template #loaded>
+                                <button  mat-icon-button (click)="$event.stopPropagation(); removeGateway(device.deviceId._id)"
+                                    aria-label="Toggle star" matTooltip="Delete device">
+                                <mat-icon class="primary-300-fg">delete</mat-icon>
+                            </button>
+                            </ng-template> 
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+                </table>
+
+                <div class="table-not-record" *ngIf="resultsLength === 0">
+                    
+                        <ng-container *ngTemplateOutlet="templateItemZero">
+                        </ng-container>
+                   
+                </div>
+                
+            </div>
+            <!-- <mat-divider></mat-divider> -->
+            <!-- <mat-paginator [length]="resultsLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator> -->
+
+        </div>
+    </div>
+    <!-- / CONTENT CARD -->
+</div>
+
+<ng-template #templateItemZero>
+    <div class='no-items'>
+        There are no items to display
+    </div>
+</ng-template>

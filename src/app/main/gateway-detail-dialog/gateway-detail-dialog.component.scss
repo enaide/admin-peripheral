@@ -1,0 +1,90 @@
+@import "src/@fuse/scss/fuse";
+
+.dialog-content-wrapper {
+    background: #FFFFFF;
+    text-align: center;
+    margin: -24px;
+
+    .mat-form-field {
+        display: block;
+    }
+    .mat-dialog-container {
+        padding: 0;
+    }
+
+    .transparent {
+
+        .dialog-title {
+            font-weight: 400;
+        }
+    }
+
+    .logo {
+        width: 128px;
+        margin: 32px auto;
+    }
+
+    .submit-button {
+        width: 220px;
+        margin: 16px auto;
+        display: block;
+
+        @include media-breakpoint('xs') {
+            width: 90%;
+        }
+    }
+
+    .bank-contract-exists {
+        font-size: 75%;
+        margin-bottom: 2px;
+        margin-left: 15px;
+        margin-top: -20px;
+        text-align: left;
+    }
+    
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+        padding-bottom: 15px !important;
+    }
+    ::ng-deep .mat-form-field{
+        font:unset!important;
+    }
+    /* ::ng-deep mat-form-field{
+        padding: 0px 3px 0 3px;        
+        .mat-form-field-wrapper {
+            padding-bottom: unset !important;
+        }    
+    } */
+
+    ::ng-deep form{
+        display: unset !important;
+        // background: red;
+    }
+
+    .operate {
+        // background: rebeccapurple;
+        // color: green;
+        position: relative;
+        // margin-left: 10px;
+        span.sub-label {
+            margin-top: 10px;
+        }
+        .test {
+            position: absolute;
+            top: -12px;
+        }
+    }
+
+    .mat-hint{
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    .submit-button {
+        display: block;
+
+        @include media-breakpoint('xs') {
+            width: 90%;
+        }
+    }
+
+}

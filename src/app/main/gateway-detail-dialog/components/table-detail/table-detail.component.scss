@@ -1,0 +1,154 @@
+@import "src/@fuse/scss/fuse";
+
+.profile-box {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+@include media-breakpoint('md') {
+    .profile-box {
+        width: calc(50% - 8px);
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+}
+
+.container {
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    // margin: 10px;
+    padding: 25px;
+}
+
+.mat-table {
+
+    text-align: left;
+    // max-height: 800px;
+}
+
+.mat-cell,
+.mat-header-cell {
+    //min-width: 200px;
+    font-size: 14px;
+    white-space: nowrap;
+
+}
+
+.mat-row,
+.mat-header-row {
+    width: 100%;
+    width: max-content;
+}
+
+.table-container-body {
+    position: relative;
+    // min-height: 296px;
+    overflow: auto !important;
+}
+
+.table-container {
+    position: relative;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-column-percent {
+    width: 65px;
+    /* padding-left: 27px; */
+    text-align: left !important;
+}
+
+.mat-column-relacion {
+    width: 65px;
+    /* padding-left: 27px; */
+    text-align: left !important;
+}
+
+.mat-column-rut {
+    width: 100px;
+    /* padding-left: 27px; */
+    text-align: left !important;
+}
+
+.mat-column-name {
+    width: 28%;
+    /* padding-left: 27px; */
+    text-align: left !important;
+}
+
+.mat-column-Ficha {
+    text-align: center;
+}
+
+td.mat-cell {
+    padding-right: 10px !important;
+}
+
+
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-row button {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.profile-box-large {
+    width: 100%;
+}
+
+mat-icon.accent-fg.mat-icon.material-icons {
+    font-size: 16px;
+}
+
+mat-icon.red-A700-fg.mat-icon.material-icons {
+    font-size: 16px;
+}
+
+.table-not-record {
+    padding: 30px 100px;
+    // min-height: 320px;
+    text-align: center;
+}
+
+.loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::ng-deep .tooltip-business-reason {
+    margin-left: -15px !important;
+}
+
+td.mat-cell {
+    user-select: auto !important;
+}
+
+.no-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 100px;
+}
+
+.related-delete{
+    text-decoration-color: red;
+    text-decoration-line: line-through;
+}
+
+.btn_delete{
+    margin-left: 35px !important;
+}
