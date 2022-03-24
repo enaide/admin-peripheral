@@ -25,14 +25,14 @@ export class DeviceDialogComponent implements OnInit {
     selected = 'online';
 
     isLoading = false;
-    loadingButtonOptions: any = {
+    options: any = {
         active: false,
         spinnerSize: 18,
         raised: true,
         buttonColor: 'accent',
         spinnerColor: 'primary',
         fullWidth: true,
-
+        text: 'save',
         disabled: true,
         mode: 'indeterminate'
     };
@@ -47,11 +47,13 @@ export class DeviceDialogComponent implements OnInit {
 
     ) {
         this.deviceForm = this.createDeviceForm();
+        const self = this;
+        this.deviceForm.valueChanges.subscribe(newValues => {            
+            self.options.disabled = !self.deviceForm.valid;           
+        });
     }
 
-    ngOnInit() {
-        
-    }
+    ngOnInit() {}
 
     public createDeviceForm(): FormGroup {
         return this._formBuilder.group({
@@ -80,12 +82,12 @@ export class DeviceDialogComponent implements OnInit {
 
     disabledForm(): void {
         this.deviceForm.disable();
-        this.loadingButtonOptions.active = true;        
+        this.options.active = true;        
     }
 
     enabledForm(): void {
         this.deviceForm.enable();
-        this.loadingButtonOptions.active = false;        
+        this.options.active = false;        
     }
 
     save() {
@@ -103,7 +105,6 @@ export class DeviceDialogComponent implements OnInit {
                 date: this.Date.value.format('DD/MM/YYYY HH:mm') ,
                 periphId: this.data.periphId               
             };
-            console.log(device);
 
             this.gatewayService.registerDevice(device)
             .pipe(

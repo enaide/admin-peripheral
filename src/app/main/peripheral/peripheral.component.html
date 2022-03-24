@@ -52,20 +52,34 @@
                     <!-- Buttons Column-->
                     <ng-container matColumnDef="Ficha">
                         <th mat-header-cell *matHeaderCellDef class="not-print">Actions</th>
-                        <td mat-cell *matCellDef="let row" class="not-print">  
-                            <button  mat-icon-button (click)="$event.stopPropagation(); detailDevice(row)" aria-label="Toggle star"
-                                matTooltip="Device view">
+                        <td mat-cell *matCellDef="let gateway" class="ficha">  
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                            <button  mat-icon-button (click)="$event.stopPropagation(); detailDevice(gateway)" aria-label="Toggle star"
+                                matTooltip="gateway view">
                                 <mat-icon class="primary-300-fg">storage</mat-icon>
-                            </button>                          
-                            <button  mat-icon-button (click)="$event.stopPropagation(); addDevice(row._id)" aria-label="Toggle star"
-                                matTooltip="Add Device">
+                            </button>     
+
+                            <button  mat-icon-button (click)="$event.stopPropagation(); addDevice(gateway._id)" aria-label="Toggle star"
+                                matTooltip="Add gateway">
                                 <mat-icon class="primary-300-fg">router</mat-icon>
                             </button>
-                            <button  mat-icon-button (click)="$event.stopPropagation(); removeGateway(row._id)"
-                                aria-label="Toggle star" matTooltip="Delete device">
-                                <mat-icon class="primary-300-fg">delete</mat-icon>
-                            </button>
-
+                            
+                            <mat-spinner *ngIf="gateway?.inProgress;else loaded"
+                                [disabled]="gateway?.inProgress" 
+                                [class.active]="gateway?.inProgress"
+                                [diameter]="20" color="accent">
+                            </mat-spinner>
+                            
+                            <ng-template #loaded>
+                                <button  mat-icon-button 
+                                    aria-label="Toggle star" matTooltip="Delete gateway"                                
+                                    (click)="$event.stopPropagation(); onSelectGateway(gateway)">                                
+                                    <mat-icon class="red-900-fg">
+                                        delete
+                                    </mat-icon>
+                                </button>  
+                            </ng-template> 
+                        </div>  
                         </td>
                     </ng-container>
 

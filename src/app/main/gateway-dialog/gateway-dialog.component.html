@@ -19,7 +19,7 @@
                            autocomplete="off"
                            [formControlName]="'Name'"
                            [placeholder]="'Name'"
-                           [readonly]="loadingButtonOptions.active" required>
+                           [readonly]="options.active" required>
 
                     <mat-error *ngIf="Name.invalid && Name.errors.required">
                         Field required
@@ -33,7 +33,7 @@
                     <input matInput type="text" typeNumbersPositiveOnly
                            [formControlName]="'Serial'"
                            [placeholder]="'Serial'"
-                           [readonly]="loadingButtonOptions.active" required>
+                           [readonly]="options.active" required>
 
                     <mat-error *ngIf="Serial.invalid && Serial.errors.required">
                         Field required
@@ -45,7 +45,7 @@
                     <input matInput type="text" 
                            [formControlName]="'IpAddressd'"
                            [placeholder]="'Ipv4 Addressd'"
-                           [readonly]="loadingButtonOptions.active" required>
+                           [readonly]="options.active" required>
 
                     <mat-error *ngIf="IpAddressd.invalid && IpAddressd.errors.required">
                         Field required
@@ -57,11 +57,8 @@
             <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="center center">
                 <button mat-raised-button type="button" [color]="'default'" (click)="dialogRef.close()">
                     Cancel
-                </button>
-                <button mat-raised-button type="button" [color]="'default'" (click)="save()">
-                    Save
-                </button>
-                
+                </button>                
+                <app-loading-button style="margin-left: 10px" (clickButton)="save()" [options]="options"></app-loading-button>                
             </div>
             
         </form>

@@ -1,0 +1,22 @@
+<button
+    mat-button
+    class="h-100-p"
+    [style.color]="options.buttonColor"
+    [class.active]="options.active"
+    [class.fullWidth]="options.fullWidth"
+    [class.mat-raised-button]="options.raised"
+    [attr.aria-label]="options.text"
+    [disabled]="options.active || options.disabled"
+    
+    (click)="clicked($event)"
+>
+    <span>{{ options.text }}</span>
+    <mat-spinner *ngIf="options.active"
+        class="spinner"
+        [diameter]="options.spinnerSize"
+        [color]="options.spinnerColor"
+        [mode]="options.mode"
+        [value]="options.value"        
+    >
+    </mat-spinner>
+</button>

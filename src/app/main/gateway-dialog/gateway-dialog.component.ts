@@ -24,14 +24,14 @@ export class GatewayDialogComponent implements OnInit {
     gatewayForm: FormGroup ;
 
     isLoading = false;
-    loadingButtonOptions: any = {
+    options: any = {
         active: false,
         spinnerSize: 18,
         raised: true,
         buttonColor: 'accent',
         spinnerColor: 'primary',
         fullWidth: true,
-
+        text: 'save',
         disabled: true,
         mode: 'indeterminate'
     };
@@ -46,11 +46,13 @@ export class GatewayDialogComponent implements OnInit {
 
     ) {
         this.gatewayForm = this.createGatewayForm();
+        const self = this;
+        this.gatewayForm.valueChanges.subscribe(newValues => {            
+            self.options.disabled = !self.gatewayForm.valid;           
+        });
     }
 
-    ngOnInit() {
-        
-    }
+    ngOnInit() {}
 
     public createGatewayForm(): FormGroup {
         return this._formBuilder.group({
@@ -75,13 +77,13 @@ export class GatewayDialogComponent implements OnInit {
     disabledForm(): void {
 
         this.gatewayForm.disable();
-        this.loadingButtonOptions.active = true;        
+        this.options.active = true;        
     }
 
     enabledForm(): void {
 
         this.gatewayForm.enable();
-        this.loadingButtonOptions.active = false;        
+        this.options.active = false;        
     }
 
     save() {
@@ -90,10 +92,9 @@ export class GatewayDialogComponent implements OnInit {
         
         if (!this.gatewayForm.valid) {
             return;
-        } else {
+        }else {
             
             this.disabledForm();                                      
-
             const gateWay: Gateway = {                
                 serial: this.Serial.value,
                 name: this.Name.value,
@@ -116,13 +117,11 @@ export class GatewayDialogComponent implements OnInit {
                         this.dialogRef.close(true);                                                
                         if(this.data.reloadTable) {
                             this.data.reloadTable() 
-                        } 
-                        
+                        }                         
                         break;
                     default:
                         console.log({erros: response});
-                        this.enabledForm();
-                        
+                        this.enabledForm();                        
                         break;
                 }
             });

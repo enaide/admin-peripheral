@@ -24,6 +24,17 @@ export class TableDetailComponent implements OnInit {
         this.resultsLength = this.devices.length;
     }
 
+    onSelectDevice(device: any): void {
+
+        device.inProgress = true;        
+        this.gatewayService.removeDevice(this.periphId, device.deviceId._id).subscribe(res=>{
+            device.inProgress = false;                        
+            this.devices = this.devices.filter(item =>{
+                return item.deviceId._id.toString() !== device.deviceId._id.toString();
+            });
+        });
+    }
+
     removeGateway(deviceId: string){
         
         this.gatewayService.removeDevice(this.periphId, deviceId).subscribe(res=>{

@@ -19,7 +19,7 @@
                            autocomplete="off"
                            [formControlName]="'uid'"
                            [placeholder]="'uid'"
-                           [readonly]="loadingButtonOptions.active" required>
+                           [readonly]="options.active" required>
 
                     <mat-error *ngIf="UID.invalid && UID.errors.required">
                         Field required
@@ -42,7 +42,7 @@
                     <input matInput type="text" typeNumbersPositiveOnly
                            [formControlName]="'vendor'"
                            [placeholder]="'vendor'"
-                           [readonly]="loadingButtonOptions.active" required>
+                           [readonly]="options.active" required>
 
                     <mat-error *ngIf="Vendor.invalid && Vendor.errors.required">
                         Field required
@@ -68,10 +68,7 @@
                 <button mat-raised-button type="button" [color]="'default'" (click)="dialogRef.close()">
                     Cancel
                 </button>
-                <button mat-raised-button type="button" [color]="'default'" (click)="save()">
-                    Save
-                </button>
-                
+                <app-loading-button style="margin-left: 10px" (clickButton)="save()" [options]="options"></app-loading-button>                
             </div>
             
         </form>

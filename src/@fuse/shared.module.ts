@@ -1,3 +1,4 @@
+import { LoadingButtonModule } from './components/loading-button/loading-button.module';
 import { FuseCountdownModule } from './components/countdown/countdown.module';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FuseDirectivesModule } from '@fuse/directives/directives';
 import { FusePipesModule } from '@fuse/pipes/pipes.module';
+
+
 
 @NgModule({
     imports: [
@@ -18,7 +21,8 @@ import { FusePipesModule } from '@fuse/pipes/pipes.module';
 
         FuseDirectivesModule,
         FusePipesModule,
-        FuseCountdownModule
+        FuseCountdownModule,
+        LoadingButtonModule
     ],
     exports: [
         CommonModule,
@@ -29,7 +33,9 @@ import { FusePipesModule } from '@fuse/pipes/pipes.module';
 
         FuseDirectivesModule,
         FusePipesModule,
-        FuseCountdownModule
+        FuseCountdownModule, 
+        LoadingButtonModule
+
     ]
 })
 export class FuseSharedModule {

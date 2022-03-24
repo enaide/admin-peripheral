@@ -1,3 +1,4 @@
+import { from } from 'rxjs';
 // export * from './confirm-dialog/confirm-dialog.module';
 export * from './countdown/countdown.module';
 export * from './highlight/highlight.module';
@@ -9,3 +10,4 @@ export * from './shortcuts/shortcuts.module';
 export * from './sidebar/sidebar.module';
 export * from './theme-options/theme-options.module';
 export * from './widget/widget.module';
+export * from './loading-button/loading-button.module';

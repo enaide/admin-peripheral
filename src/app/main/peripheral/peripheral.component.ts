@@ -52,9 +52,6 @@ export class PeripheralComponent implements OnInit
         });
     }
 
-    addEditPartner(related?: any): void {
-
-    }
 
     detailDevice(gateWay: Gateway){
 
@@ -65,9 +62,9 @@ export class PeripheralComponent implements OnInit
             }
         });
 
-        // this.dialogRef.afterClosed().subscribe(result => {            
-        //     this.init_table();            
-        // });
+        this.dialogRef.afterClosed().subscribe(result => {            
+            this.init_table();            
+        });
     }
 
     addGateway() {
@@ -103,5 +100,22 @@ export class PeripheralComponent implements OnInit
                 this.init_table();
             }            
         });
+    }
+
+    onSelectGateway(gateway){
+        
+        gateway.inProgress = true;          
+        this.gatewayService.remove(gateway._id)
+        .pipe(
+            catchError(err => {        
+                this.isLoadingResults = false;
+                return of({error: err});
+            })
+        ).subscribe((res: any) =>{
+            gateway.inProgress = true;              
+            if(+res.code === 200){                
+                this.init_table();
+            }            
+        });    
     }
 }
