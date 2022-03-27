@@ -3,7 +3,7 @@
 Conditions
 You have to prepare a solution to the proposed problem in the defined period of time. The solution must comply with the requirements. For anything not explicitly listed, you are free to choose whatever technology/library/tool you feel comfortable with. 
 
-Once ready, you must send a package with the source code of the solution, so it can be built and reviewed by Musala Soft. Instructions how to use the solution must also be provided (resource names, SQL scripts to import test data, other scripts, etc.).
+Once ready, you must send a package with the source code of the solution, so it can be built and reviewed by (...). Instructions how to use the solution must also be provided (resource names, SQL scripts to import test data, other scripts, etc.).
 If you have completed the task after the deadline has expired, you are still encouraged to submit a solution.
 
 # Software Requirements
@@ -25,6 +25,7 @@ Each gateway has:
 •	human-readable name (string),
 •	IPv4 address (to be validated),
 •	multiple associated peripheral devices. 
+
 Each peripheral device has:
 •	a UID (number),
 •	vendor (string),
